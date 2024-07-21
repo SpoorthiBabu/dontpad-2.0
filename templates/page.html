@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_name }}</title>
+</head>
+<body>
+    <h1>Page: {{ page_name }}</h1>
+    <form action="/{{ page_name }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <button type="submit">Upload Image</button>
+    </form>
+    <form action="/{{ page_name }}" method="post">
+        <textarea name="text"></textarea>
+        <button type="submit">Save Text</button>
+    </form>
+    <div>
+        {% for item in content %}
+            {% if item.type == 'text' %}
+                <p>{{ item.content }}</p>
+            {% elif item.type == 'image' %}
+                <img src="data:image/jpeg;base64,{{ item.content | b64encode }}" alt="Image">
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
