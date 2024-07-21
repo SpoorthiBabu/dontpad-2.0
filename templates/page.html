@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,5 +23,66 @@
             {% endif %}
         {% endfor %}
     </div>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_name }}</title>
+</head>
+<body>
+    <h1>{{ page_name }}</h1>
+
+    <!-- {% if content %}
+        {% for item in content %}
+            {% if item.type == 'image' %}
+                <img src="{{ url_for('image', filename=item.filename) }}" alt="Image">
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>No content found.</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Upload New Image:</label>
+        <input type="file" id="file" name="file" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
+
+    <form method="post">
+        <label for="text">Add Text Content:</label>
+        <textarea id="text" name="text"></textarea>
+        <button type="submit">Save Text</button>
+    </form> -->
+
+
+    {% if content %}
+        {% for item in content %}
+            {% if item.type == 'image' %}
+                <!-- <img src="data:image/jpeg;base64,{{ item.content | b64encode }}" alt="Image"> -->
+                <img src="{{ url_for('get_image', file_id=item.content) }}" alt="Image" style="max-width:100%;height:auto;">
+            {% elif item.type == 'text' %}
+                <p>{{ item.content }}</p>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>No content found.</p>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        <label for="file">Upload New Image:</label>
+        <input type="file" id="file" name="file" accept="image/*">
+        <button type="submit">Upload</button>
+    </form>
+
+    <form method="post">
+        <label for="text">Add Text Content:</label>
+        <textarea id="text" name="text"></textarea>
+        <button type="submit">Save Text</button>
+    </form>
 </body>
 </html>

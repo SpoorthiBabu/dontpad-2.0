@@ -1,20 +1,23 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Name</title>
 </head>
 <body>
     <h1>Enter Page Name</h1>
-    <form action="/" method="get">
-        <input type="text" name="page_name">
-        <button type="submit">Go</button>
+    <form action="/" method="post">
+        <label for="page_name">Page Name:</label>
+        <input type="text" id="page_name" name="page_name" required>
+        <input type="submit" value="Go">
     </form>
 </body>
-</html> -->
+</html>
 
 
-<!DOCTYPE html>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,8 +27,13 @@
 <body>
     <h1>Upload Image</h1>
     <form action="/" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
+        <label for="page_name">Enter Page Name:</label>
+        <input type="text" id="page_name" name="page_name" required>
+        
+        <label for="file">Select Image:</label>
+        <input type="file" id="file" name="file" accept="image/*" required>
+        
         <input type="submit" value="Upload">
     </form>
 </body>
-</html>
+</html> -->
